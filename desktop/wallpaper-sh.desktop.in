@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=wallpaper.sh
+GenericName=Wallpaper of the day
+Comment=A fresh wallpaper of the day, on any theme
+Exec=python3 @APP_DIR@/main.py
+Icon=wallpaper-sh
+Terminal=false
+Categories=Settings;DesktopSettings;
+Keywords=wallpaper;background;lock screen;login;theme;daily;
+StartupWMClass=wallpaper-sh

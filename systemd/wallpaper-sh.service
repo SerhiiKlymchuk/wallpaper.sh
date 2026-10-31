@@ -1,0 +1,19 @@
+[Unit]
+Description=wallpaper.sh - set the wallpaper of the day
+After=graphical-session.target
+# Never start outside a graphical session (nothing to apply the wallpaper to).
+Requisite=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wallpaper-sh.py
+
+# Optional: WALLHAVEN_API_KEY=... (file may be absent - the leading "-" allows that)
+EnvironmentFile=-%h/.config/wallpaper-sh/env
+
+# The script waits up to 5 min for the network, so allow more than the default.
+TimeoutStartSec=15min
+
+# Stay out of the way of anything the user is actually doing.
+Nice=10
+IOSchedulingClass=idle

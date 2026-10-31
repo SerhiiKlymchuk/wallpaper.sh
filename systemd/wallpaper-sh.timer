@@ -1,0 +1,19 @@
+[Unit]
+Description=wallpaper.sh - wallpaper of the day schedule
+# Run only inside a logged-in graphical session. At boot the user manager can be
+# started briefly before login; a timer tied to timers.target would fire its
+# catch-up run there, get killed when that manager exits, and still count as
+# "ran today". Bound to the session, the catch-up happens right after login.
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Timer]
+OnCalendar=*-*-* 08:30:00
+# Up to 30 min of jitter -> the wallpaper changes between 08:30 and 09:00.
+RandomizedDelaySec=30m
+# If the machine was asleep or powered off at 08:30, run as soon as you log in.
+Persistent=true
+AccuracySec=1m
+
+[Install]
+WantedBy=graphical-session.target
